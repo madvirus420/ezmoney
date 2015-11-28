@@ -1,5 +1,7 @@
-package com.sadhus.ezmoney;
+package com.sadhus.ezmoney.activities.core;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,12 +11,47 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.sadhus.ezmoney.R;
+import com.sadhus.ezmoney.activities.intro.DoneSlide;
+import com.sadhus.ezmoney.activities.intro.FirstAppIntroActivity;
+
 public class MainActivity extends AppCompatActivity {
+    private boolean mIsInResolution;
+    private static final String KEY_IN_RESOLUTION = "is_in_resolution";
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        if (savedInstanceState != null) {
+            mIsInResolution = savedInstanceState.getBoolean(KEY_IN_RESOLUTION, false);
+        }
+        /***
+         * Check whether the user has logged in before.
+         * If no, show the app intro and Login Screen
+         * If yes, proceed with getting the user credentials from the user
+         */
+        SharedPreferences prefs = getSharedPreferences("ezMoneyPreferences", MODE_PRIVATE);
+        if (prefs.contains("isFirstTime")) {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("isFirstTime", false);
+            editor.apply();
+
+        } else {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("isFirstTime", false);
+            editor.apply();
+            Intent intent = new Intent(this, FirstAppIntroActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        }
+
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

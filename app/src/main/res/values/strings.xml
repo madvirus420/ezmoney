@@ -2,4 +2,6 @@
     <string name="app_name">ezmoney</string>
     <string name="action_settings">Settings</string>
     <string name="action_register">Register Wallet</string>
+
+
 </resources>
