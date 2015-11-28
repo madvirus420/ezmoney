@@ -8,5 +8,5 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/action_register"
-        android:id="@+id/button2" />
+        android:id="@+id/register_button" />
 </LinearLayout>
