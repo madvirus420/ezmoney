@@ -1,5 +1,6 @@
 package com.sadhus.ezmoney.activities.core;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,20 +11,28 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import com.sadhus.ezmoney.R;
 import com.sadhus.ezmoney.activities.intro.DoneSlide;
 import com.sadhus.ezmoney.activities.intro.FirstAppIntroActivity;
+import com.sadhus.ezmoney.activities.register.RegisterWallet;
 
 public class MainActivity extends AppCompatActivity {
     private boolean mIsInResolution;
     private static final String KEY_IN_RESOLUTION = "is_in_resolution";
     private static final String TAG = "MainActivity";
+    private static Context sInstance;
+
+    public static Context getInstance() {
+        return sInstance;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sInstance = this;
 
 
         if (savedInstanceState != null) {
@@ -61,6 +70,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        Button registerButton = (Button) findViewById(R.id.button_main_register);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent doneSlide = new Intent(getApplicationContext(), RegisterWallet.class);
+                //doneSlide.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(doneSlide);
             }
         });
     }

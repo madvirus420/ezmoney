@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+
+<ScrollView
+    android:id="@+id/login_form"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".activities.register.RegisterWallet">
+
+        <!-- Login progress -->
+        <ProgressBar
+            android:id="@+id/login_progress"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone" />
 
     <EditText
         android:layout_width="match_parent"
@@ -10,7 +33,7 @@
         android:inputType="textPersonName"
         android:hint="First Name"
         android:ems="10"
-        android:id="@+id/editText" />
+        android:id="@+id/register_wallet_fname" />
 
     <EditText
         android:layout_width="match_parent"
@@ -18,7 +41,7 @@
         android:inputType="textPersonName"
         android:hint="Surname"
         android:ems="10"
-        android:id="@+id/editText2" />
+        android:id="@+id/register_wallet_lname" />
 
     <EditText
         android:layout_width="match_parent"
@@ -26,7 +49,7 @@
         android:inputType="date"
         android:ems="10"
         android:hint="@string/action_date"
-        android:id="@+id/editText3" />
+        android:id="@+id/register_wallet_dob" />
 
     <RadioGroup
         android:layout_width="fill_parent"
@@ -35,21 +58,21 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/signup_gender_male"
+            android:id="@+id/register_wallet_gender_male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
             android:text="Male" />
 
         <RadioButton
-            android:id="@+id/signup_gender_female"
+            android:id="@+id/register_wallet_gender_female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
             android:text="Female" />
 
         <RadioButton
-            android:id="@+id/signup_gender_others"
+            android:id="@+id/register_wallet_gender_others"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
@@ -60,14 +83,46 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText4" />
+        android:id="@+id/register_wallet_display_name"
+        android:hint="Display Name on ezMoney" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
+        android:hint="Email ID"
         android:ems="10"
-        android:id="@+id/editText5"
+        android:id="@+id/register_wallet_email"
         android:layout_gravity="center_horizontal" />
 
-</LinearLayout>
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="userType"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/register_wallet_user_customer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="Customer" />
+
+            <RadioButton
+                android:id="@+id/register_wallet_user_merchant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="Merchant" />
+
+        </RadioGroup>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/action_register"
+            android:id="@+id/register_wallet_register_button" />
+
+    </LinearLayout>
+
+</ScrollView>

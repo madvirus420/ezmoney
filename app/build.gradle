@@ -26,4 +26,5 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
     compile 'com.github.paolorotolo:appintro:3.2.0'
     compile 'com.koushikdutta.ion:ion:+'
+    compile 'com.google.android.gms:play-services-gcm:8.3.0'
 }
